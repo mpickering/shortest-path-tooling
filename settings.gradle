@@ -1,6 +1,21 @@
 rootProject.name = 'shortest-path-tooling'
 
+dependencyResolutionManagement {
+    repositoriesMode = RepositoriesMode.FAIL_ON_PROJECT_REPOS
+    repositories {
+        mavenLocal()
+        maven {
+            url = 'https://repo.runelite.net'
+            content {
+                includeGroupByRegex("net\\.runelite.*")
+            }
+        }
+        mavenCentral()
+    }
+}
+
 include 'accounts'
+include 'routing'
 
 // The public route service; its frontend is the npm project in web/.
 include 'service'
