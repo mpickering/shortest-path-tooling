@@ -2,9 +2,9 @@ plugins {
     id 'java-library'
 }
 
-// Headless route planning for an account: profiles, plugin settings, the pathfinder config, and the
-// route API contract (corpus/schemas) that the route service serves; accounts come from :accounts. Tooling tests and the service
-// both build on it, so they plan routes the same way.
+// Headless route planning for an account: profiles, plugin settings and the pathfinder config;
+// accounts come from :accounts. Tooling tests and the route service (collisionlab/osrs-planner,
+// which includes this build) both build on it, so they plan routes the same way.
 dependencies {
     api 'shortestpath:shortest-path'
     api project(':accounts')
