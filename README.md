@@ -39,20 +39,15 @@ The published dashboard is also available on GitHub Pages:
 
 ## Route planner
 
-[`web/`](web/README.md) is the public route planner: a React frontend and a Java route service
-(`web/service`, the Gradle project `:service`). The service plans routes with the same
-[`routing/`](routing/) module as the dashboard, benchmarks and route CLI, on the pinned plugin:
-
-```bash
-./gradlew :service:run                      # terminal 1: the route service on :8080
-cd web && npm install && npm run dev        # terminal 2: http://localhost:5173/route
-```
+The public route planner (frontend and route service) lives in
+[`collisionlab/osrs-planner`](https://github.com/collisionlab/osrs-planner). It includes this
+build and plans routes with the same [`routing/`](routing/) module as the dashboard, benchmarks
+and route CLI, on the pinned plugin.
 
 | Project | Contents |
 |---|---|
-| `accounts/` | Account builds (the web's account format), the one compiler from a build to an `Account`, and the canonical profiles |
-| `routing/` | Profiles, plugin settings and pathfinder config, and the route API (route policies, route plans) |
-| `web/service/` | The route service's HTTP layer |
+| `accounts/` | Account builds (the planner's account format), the one compiler from a build to an `Account`, and the canonical profiles |
+| `routing/` | Profiles, plugin settings and pathfinder config |
 | root project | Dashboard, benchmarks, route CLI, scenario suites and cache dumpers (test sources) |
 
 ## Using a separate shortest-path checkout
@@ -215,5 +210,6 @@ python3 scripts/rebuild_bank_tsv.py
 
 - [`shortest-path`](https://github.com/Skretzo/shortest-path) — the plugin
   itself (carried here as the `shortest-path/` submodule).
-- `shortest-path-web` and `shortest-path-corpus` were merged into this repository as `web/` and
-  `corpus/`, with their histories.
+- `shortest-path-corpus` was merged into this repository as `corpus/`, with its history.
+- [`collisionlab/osrs-planner`](https://github.com/collisionlab/osrs-planner) — the public route
+  planner, built on `accounts/` and `routing/` (formerly `shortest-path-web`).

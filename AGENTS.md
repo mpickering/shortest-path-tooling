@@ -18,9 +18,7 @@ around it.
 |------|----------|
 | `shortest-path/` | Git submodule (pinned commit). Plugin sources + data in `src/main/resources/` (`collision-map.zip`, `destinations/`, `transports/`, `leagues/`). |
 | `accounts/` | Gradle subproject: `Account` (an account as a player describes it: levels, quests, diaries, unlocks, items, house), `AccountCompiler` (the only place facts become the varbits/varplayers in a `ClientState`), `HeadlessClient` (a RuneLite `Client` answering from a `ClientState`), and the canonical profiles (`canonical/CanonicalAccounts`). |
-| `routing/` | Gradle subproject (main sources): `shortestpath.profiles` (profiles, `PluginSettings`, `Setup`, `AccountPathfinderConfig`), `shortestpath.pathfinder.PluginResources` (world data loaded once per JVM), and `shortestpath.routeapi` (the web API: `AccountJson`, `PlannerSettings` (plugin settings as JSON, from the plugin's own `@ConfigItem`s), `Catalog`, `RoutePlans`). Tooling tests and the route service both build on it. |
-| `web/` | The public route planner: React + TypeScript + Vite frontend (npm project), deploy and infra files. See `web/README.md`. |
-| `web/service/` | Gradle subproject `:service`: the route service's HTTP layer (Javalin) on top of `routing/`. |
+| `routing/` | Gradle subproject (main sources): `shortestpath.profiles` (profiles, `PluginSettings`, `Setup`, `AccountPathfinderConfig`), `shortestpath.pathfinder.PluginResources` (world data loaded once per JVM). Tooling tests and the route service in `collisionlab/osrs-planner` (which includes this build) both build on it. |
 | `corpus/` | Canonical routes and the JSON schemas (route API, account) the service and frontend share (see `corpus/README.md`). |
 | `src/test/java/shortestpath/` | The remaining tooling Java lives under *test* sources: `scenarios/` (scenario suites), `dashboard/` (site generator), `benchmark/` (benchmark adapter), `route/` (`route` CLI); model in `docs/scenarios.md`, `dump/` (cache dumpers), `pathfinder/` (profiling). |
 | `src/test/resources/` | Dashboard web assets, scenario data + expected lengths under `scenarios/`, region TSVs. |
@@ -33,9 +31,8 @@ around it.
 ## Toolchain
 
 - Java 11 (CI: temurin 11). Gradle via `./gradlew` wrapper only — never a
-  system `gradle`. One build: the root project (tooling tests), `:accounts`,
-  `:routing` and `:service`, plus the plugin as an included build.
-- Node 24 + npm for `web/` only.
+  system `gradle`. One build: the root project (tooling tests), `:accounts`
+  and `:routing`, plus the plugin as an included build.
 - Python 3 + pytest for `tests/` and `scripts/`.
 - RuneLite deps resolve as `runeLiteVersion` from `gradle.properties`
   (`latest.release`) — upstream RuneLite releases can break compilation
@@ -54,9 +51,7 @@ python3 -m pip install -r requirements.txt   # pytest, pyyaml, tqdm (homebrew py
 python3 -m pytest tests/           # Python script tests (no network, all mocked)
 python3 scripts/maintenance.py verify    # full gate: compile → submodule test → dashboard sweep → edge diff
 python3 scripts/maintenance.py validate  # data validation: hard gate + advisory tiers
-./gradlew :routing:test :service:test    # routing module + route service
-./gradlew :service:run                   # route service on :8080 (PORT to change)
-(cd web && npm install && npm run dev)   # planner on :5173, proxies /api to the service
+./gradlew :routing:test                  # routing module
 ```
 
 Dashboard options are `-P` properties: `dashboardSuite` (default

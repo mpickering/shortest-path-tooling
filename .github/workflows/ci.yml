@@ -62,37 +62,10 @@ jobs:
         run: python3 scripts/benchmark_smoke.py
         shell: bash
 
-      - name: Test the routing module and the route service
-        # Profiles, account builds, route policies and plans, then the service's HTTP layer on top.
-        run: ./gradlew :routing:test :service:test --stacktrace
+      - name: Test the routing module
+        # Profiles, account builds and route policies.
+        run: ./gradlew :routing:test --stacktrace
         shell: bash
-
-  web:
-    name: Web frontend
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: web
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Node 24
-        uses: actions/setup-node@v4
-        with:
-          node-version: "24"
-          cache: npm
-          cache-dependency-path: web/package-lock.json
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Test
-        # pretest generates the contracts from corpus/.
-        run: npm test
-
-      - name: Type-check and build
-        run: npm run build
 
   validate:
     name: Validate data + Python tests
