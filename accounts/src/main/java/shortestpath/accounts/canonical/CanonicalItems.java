@@ -13,14 +13,14 @@ final class CanonicalItems {
     }
 
     static Map<Integer, Integer> earlyInventory() {
-        Map<Integer, Integer> result = items(1, ItemID.DRAMEN_STAFF, ItemID.AMULET_OF_GLORY, ItemID.RING_OF_DUELING8,
+        Map<Integer, Integer> result = items(1, ItemID.DRAMEN_STAFF, ItemID.RING_OF_DUELING8,
             ItemID.GAMES_NECKLACE8, ItemID.TELEPORT_TO_HOUSE);
         result.put(ItemID.COINS_995, 100_000);
         return result;
     }
 
     static Map<Integer, Integer> midInventory() {
-        Map<Integer, Integer> result = items(1, ItemID.DRAMEN_STAFF, ItemID.AMULET_OF_GLORY, ItemID.RING_OF_DUELING8,
+        Map<Integer, Integer> result = items(1, ItemID.DRAMEN_STAFF, ItemID.RING_OF_DUELING8,
             ItemID.GAMES_NECKLACE8, ItemID.TELEPORT_TO_HOUSE, ItemID.DIGSITE_PENDANT_1,
             ItemID.SLAYER_RING_8, ItemID.BASIC_QUETZAL_WHISTLE);
         result.put(ItemID.COINS_995, 1_000_000);
@@ -28,7 +28,7 @@ final class CanonicalItems {
     }
 
     static Map<Integer, Integer> endInventory() {
-        Map<Integer, Integer> result = items(1, ItemID.AMULET_OF_GLORY, ItemID.RING_OF_DUELING8, ItemID.TELEPORT_TO_HOUSE,
+        Map<Integer, Integer> result = items(1, ItemID.RING_OF_DUELING8, ItemID.TELEPORT_TO_HOUSE,
             ItemID.QUEST_POINT_CAPE);
         result.put(ItemID.COINS_995, 5_000_000);
         return result;
@@ -41,7 +41,7 @@ final class CanonicalItems {
     }
 
     static Map<Integer, Integer> earlyBank() {
-        return items(1_000, ItemID.DRAMEN_STAFF, ItemID.COINS_995, ItemID.AMULET_OF_GLORY,
+        return items(1_000, ItemID.DRAMEN_STAFF, ItemID.COINS_995,
             ItemID.RING_OF_DUELING8, ItemID.GAMES_NECKLACE8, ItemID.TELEPORT_TO_HOUSE,
             ItemID.SKILLS_NECKLACE4, ItemID.COMBAT_BRACELET4, ItemID.RING_OF_WEALTH_5,
             ItemID.NECKLACE_OF_PASSAGE5);

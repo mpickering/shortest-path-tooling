@@ -30,6 +30,19 @@ public class ProfilesTest {
     }
 
     @Test
+    public void settingUnlocksTurnOnTheirPluginSettings() {
+        shortestpath.accounts.Account account = shortestpath.accounts.Account.builder()
+            .unlock(shortestpath.accounts.Unlock.CANOE_AXE_STORED, shortestpath.accounts.Unlock.RESPAWN_PRIFDDINAS).build();
+        PluginSettings settings = new PluginSettings();
+        CompiledAccount.of(account, settings);
+        assertTrue(settings.unlockCanoeAxe());
+        assertTrue(settings.respawnPrifddinas());
+        assertFalse(settings.unlockMorUlRek());
+        // The canonical profiles keep the plugin's defaults for these.
+        assertFalse(canonical("maxed").getSettings().unlockCanoeAxe());
+    }
+
+    @Test
     public void canonicalProfilesUseConcreteFactsAndQuestStates() {
         CompiledAccount mid = canonical("mid");
         assertNotNull(mid.getItemState().getBank());

@@ -107,6 +107,9 @@ public final class AccountCompiler {
         int quetzalPlatforms = 0;
         for (Unlock unlock : Unlock.values()) {
             boolean unlocked = account.unlocks().contains(unlock);
+            if (unlock.kind == Unlock.Kind.SETTING) {
+                continue; // applied to the plugin settings by CompiledAccount
+            }
             if (unlock.kind == Unlock.Kind.VARPLAYER_BIT) {
                 quetzalPlatforms |= unlocked ? unlock.value : 0;
             } else {
