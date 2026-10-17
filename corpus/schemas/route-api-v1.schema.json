@@ -313,6 +313,7 @@
         "name",
         "description",
         "section",
+        "group",
         "type",
         "defaultValue"
       ],
@@ -328,6 +329,15 @@
         },
         "section": {
           "type": "string"
+        },
+        "group": {
+          "description": "Where the planner shows the setting.",
+          "enum": [
+            "EVERYDAY",
+            "TRANSPORT",
+            "THRESHOLD",
+            "ADVANCED"
+          ]
         },
         "type": {
           "enum": [
