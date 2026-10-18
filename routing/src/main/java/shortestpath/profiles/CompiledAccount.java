@@ -49,6 +49,7 @@ public final class CompiledAccount {
                 continue;
             }
             switch (unlock.setting) {
+                case "unlockBalloonLogBasket": settings.setUnlockBalloonLogBasket(true); break;
                 case "respawnPrifddinas": settings.setRespawnPrifddinas(true); break;
                 case "unlockCanoeAxe": settings.setUnlockCanoeAxe(true); break;
                 case "unlockXericsHonour": settings.setUnlockXericsHonour(true); break;

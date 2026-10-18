@@ -12,9 +12,8 @@ import shortestpath.poh.PohMountedItem;
 
 /**
  * The plugin settings a route is planned with: a mutable {@link ShortestPathConfig}. Every
- * {@link Profiles profile} starts from one, scenarios override it with
- * {@code .settings(s -> s.setUseFairyRings(true))}, and the route service builds one from the
- * planner's settings ({@code PlannerSettings}).
+ * {@link Profiles profile} starts from one, and scenarios override it with
+ * {@code .settings(s -> s.setUseFairyRings(true))}.
  * <p>
  * Every functionally relevant setting has a field and a setter ({@code ConfigParityTest} keeps
  * them in step with the plugin's config items).

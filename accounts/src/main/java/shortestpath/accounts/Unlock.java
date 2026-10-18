@@ -9,6 +9,7 @@ import net.runelite.api.gameval.VarbitID;
  * (quetzal platforms), or, for what the game doesn't report, one of the plugin's own settings.
  */
 public enum Unlock {
+    BALLOON_LOG_BASKET_STOCKED(Group.HOT_AIR_BALLOON, "unlockBalloonLogBasket"),
     FAIRY_RINGS(Group.TRANSPORT, Kind.VARBIT, VarbitID.FAIRY2_QUEENCURE_QUEST, 100),
     RAIDS_MOUNTAIN_GUIDE_TRAVEL(Group.TRANSPORT, Kind.VARBIT, VarbitID.RAIDS_GUIDE_TRAVEL_UNLOCK, 1),
     MET_AUBURN_MOUNTAIN_GUIDE(Group.TRANSPORT, Kind.VARBIT, VarbitID.MET_AUBURN_MOUNTAIN_GUIDE, 1),
