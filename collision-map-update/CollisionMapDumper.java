@@ -752,6 +752,7 @@ public class CollisionMapDumper
 		// Coloured prison gates require their quest keys; transports model passage.
 		GHORROCK_SAPPHIRE_GATE_49122(49122),
 		GHORROCK_EMERALD_GATE_49124(49124),
+		GHORROCK_RUBY_GATE_49126(49126),
 
 		CELL_DOOR_9562(9562),
 
