@@ -749,6 +749,10 @@ public class CollisionMapDumper
 		BURGH_DE_ROTT_GATE_12817(12817),
 		BURGH_DE_ROTT_LOW_FENCE_12776(12776),
 
+		// Coloured prison gates require their quest keys; transports model passage.
+		GHORROCK_SAPPHIRE_GATE_49122(49122),
+		GHORROCK_EMERALD_GATE_49124(49124),
+
 		CELL_DOOR_9562(9562),
 
 		COOKING_GUILD_DOOR_10045(10045),
